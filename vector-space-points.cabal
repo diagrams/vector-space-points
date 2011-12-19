@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                vector-space-points
-version:             0.1.0.0
+version:             0.1.1.0
 synopsis:            A type for points, as distinct from vectors.
 description:         A type for points, as distinct from vectors, built on top
                      of Data.AffineSpace.
