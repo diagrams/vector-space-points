@@ -24,7 +24,7 @@ module Data.AffineSpace.Point
        ) where
 
 import Data.VectorSpace
-import qualified Data.AffineSpace as AS
+import Data.AffineSpace
 
 import Control.Newtype
 import Data.Data (Data)
@@ -50,8 +50,8 @@ instance Newtype (Point v) v where
 origin :: AdditiveGroup v => Point v
 origin = P zeroV
 
-instance AdditiveGroup v => AS.AffineSpace (Point v) where
-  type AS.Diff (Point v) = v
+instance AdditiveGroup v => AffineSpace (Point v) where
+  type Diff (Point v) = v
   P v1 .-. P v2 = v1 ^-^ v2
   P v1 .+^ v2   = P (v1 ^+^ v2)
 
