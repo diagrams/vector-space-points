@@ -20,7 +20,7 @@ source-repository head
 
 library
   exposed-modules:     Data.AffineSpace.Point
-  build-depends:       base >=4.0 && < 4.6, 
+  build-depends:       base >=4.0 && < 4.7,
                        vector-space >=0.7 && < 0.9, 
                        newtype ==0.2.*
   hs-source-dirs:      src
