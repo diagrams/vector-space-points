@@ -34,11 +34,11 @@ import Data.Typeable (Typeable)
 --  Points  ------------------------------------------------
 ------------------------------------------------------------
 
--- | @Point@ is a newtype wrapper around vectors that we wish to treat
---   as points, so we don't get them mixed up. The distinction is
---   important: translations affect points, but leave vectors
---   unchanged.  Points are instances of the 'AffineSpace' class from
---   "Data.AffineSpace".
+-- | @Point@ is a newtype wrapper around vectors used to represent
+--   points, so we don't get them mixed up. The distinction between
+--   vectors and points is important: translations affect points, but
+--   leave vectors unchanged.  Points are instances of the
+--   'AffineSpace' class from "Data.AffineSpace".
 newtype Point v = P v
   deriving (Eq, Ord, Read, Show, Data, Typeable, Functor)
 
