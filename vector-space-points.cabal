@@ -15,8 +15,8 @@ category:            Math
 build-type:          Simple
 cabal-version:       >=1.10
 source-repository head
-  type:     darcs
-  location: http://patch-tag.com/r/byorgey/vector-space-points
+  type:     git
+  location: git://github.com/diagrams/vector-space-points.git
 
 library
   exposed-modules:     Data.AffineSpace.Point
