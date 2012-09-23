@@ -19,7 +19,7 @@
 module Data.AffineSpace.Point
        ( -- * Points
 
-         Point(..), origin, (*.)
+         Point(..), unPoint, origin, (*.)
 
        ) where
 
@@ -41,6 +41,14 @@ import Data.Typeable (Typeable)
 --   "Data.AffineSpace".
 newtype Point v = P v
   deriving (Eq, Ord, Read, Show, Data, Typeable, Functor)
+
+-- | Convert a point @p@ into the vector from the origin to @p@.  This
+--   should be considered a \"semantically unsafe\" operation; think
+--   carefully about whether and why you need to use it.  The
+--   recommended way to do this conversion would be to write @(p
+--   '.-.' 'origin')@.
+unPoint :: Point v -> v
+unPoint (P v) = v
 
 instance Newtype (Point v) v where
   pack = P
