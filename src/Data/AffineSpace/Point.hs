@@ -18,9 +18,11 @@
 
 module Data.AffineSpace.Point
        ( -- * Points
+         Point(..), unPoint, origin, (*.), mirror,
 
-         Point(..), unPoint, origin, (*.)
-
+         -- * Reflection through a point
+         relative, relative2, relative3, 
+         reflectThrough, 
        ) where
 
 import Data.VectorSpace
@@ -66,3 +68,23 @@ instance AdditiveGroup v => AffineSpace (Point v) where
 -- | Scale a point by a scalar.
 (*.) :: VectorSpace v => Scalar v -> Point v -> Point v
 s *. P v = P (s *^ v)
+
+-- | Reflect a point through 'origin'.
+mirror :: AdditiveGroup v => Point v -> Point v
+mirror = reflectThrough origin
+
+-- | Apply a transformation relative to the given point.
+relative :: AffineSpace p => p -> (Diff p -> Diff p) -> p -> p
+relative p f = (p .+^) . f . (.-. p)
+
+-- | Apply a transformation relative to the given point.
+relative2 :: AffineSpace p => p -> (Diff p -> Diff p -> Diff p) -> p -> p -> p
+relative2 p f x y = (p .+^) $ f (inj x) (inj y) where inj = (.-. p)
+
+-- | Apply a transformation relative to the given point.
+relative3 :: AffineSpace p => p -> (Diff p -> Diff p -> Diff p -> Diff p) -> p -> p -> p -> p
+relative3 p f x y z = (p .+^) $ f (inj x) (inj y) (inj z) where inj = (.-. p)
+
+-- | Mirror a point through a given point.
+reflectThrough :: AffineSpace p => p -> p -> p
+reflectThrough o = relative o negateV
