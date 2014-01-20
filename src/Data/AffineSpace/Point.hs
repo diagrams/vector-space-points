@@ -1,9 +1,8 @@
-{-# LANGUAGE TypeFamilies
-           , MultiParamTypeClasses
-           , FlexibleInstances
-           , DeriveFunctor
-           , DeriveDataTypeable
-  #-}
+{-# LANGUAGE DeriveDataTypeable    #-}
+{-# LANGUAGE DeriveFunctor         #-}
+{-# LANGUAGE FlexibleInstances     #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeFamilies          #-}
 -----------------------------------------------------------------------------
 -- |
 -- Module      :  Data.AffineSpace.Point
@@ -21,16 +20,16 @@ module Data.AffineSpace.Point
          Point(..), unPoint, origin, (*.), mirror,
 
          -- * Reflection through a point
-         relative, relative2, relative3, 
-         reflectThrough, 
+         relative, relative2, relative3,
+         reflectThrough,
        ) where
 
-import Data.VectorSpace
-import Data.AffineSpace
+import           Data.AffineSpace
+import           Data.VectorSpace
 
-import Control.Newtype
-import Data.Data (Data)
-import Data.Typeable (Typeable)
+import           Control.Newtype
+import           Data.Data        (Data)
+import           Data.Typeable    (Typeable)
 
 ------------------------------------------------------------
 --  Points  ------------------------------------------------
@@ -69,19 +68,19 @@ instance AdditiveGroup v => AffineSpace (Point v) where
 (*.) :: VectorSpace v => Scalar v -> Point v -> Point v
 s *. P v = P (s *^ v)
 
--- | Reflect a point through 'origin'.
+-- | Reflect a point through the 'origin'.
 mirror :: AdditiveGroup v => Point v -> Point v
 mirror = reflectThrough origin
 
--- | Apply a transformation relative to the given point.
+-- | Apply a transformation relative to the given point.
 relative :: AffineSpace p => p -> (Diff p -> Diff p) -> p -> p
 relative p f = (p .+^) . f . (.-. p)
 
--- | Apply a transformation relative to the given point.
+-- | Apply a transformation relative to the given point.
 relative2 :: AffineSpace p => p -> (Diff p -> Diff p -> Diff p) -> p -> p -> p
 relative2 p f x y = (p .+^) $ f (inj x) (inj y) where inj = (.-. p)
 
--- | Apply a transformation relative to the given point.
+-- | Apply a transformation relative to the given point.
 relative3 :: AffineSpace p => p -> (Diff p -> Diff p -> Diff p -> Diff p) -> p -> p -> p -> p
 relative3 p f x y z = (p .+^) $ f (inj x) (inj y) (inj z) where inj = (.-. p)
 
