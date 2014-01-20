@@ -1,3 +1,8 @@
+* 0.1.3: 19 January 2014
+
+  + add `relative` function for turning linear transformations into affine by picking an "origin"
+  + add `reflectThrough` and `mirror` functions
+
 * 0.1.2.1: 28 March 2013
 
   + bump upper bound to allow base-4.7
