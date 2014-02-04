@@ -27,7 +27,6 @@ module Data.AffineSpace.Point
 import           Data.AffineSpace
 import           Data.VectorSpace
 
-import           Control.Newtype
 import           Data.Data        (Data)
 import           Data.Typeable    (Typeable)
 
@@ -50,10 +49,6 @@ newtype Point v = P v
 --   '.-.' 'origin')@.
 unPoint :: Point v -> v
 unPoint (P v) = v
-
-instance Newtype (Point v) v where
-  pack = P
-  unpack (P v) = v
 
 -- | The origin of the vector space @v@.
 origin :: AdditiveGroup v => Point v
