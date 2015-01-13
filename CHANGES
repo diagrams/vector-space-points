@@ -1,3 +1,7 @@
+* 0.2.1: 13 Jan 2015
+
+  + allow vector-space-0.9
+
 * 0.2: 8 March 2014
 
   + remove Newtype instance for Point, and 'newtype' package dependency
