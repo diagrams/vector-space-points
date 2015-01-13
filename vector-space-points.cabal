@@ -1,5 +1,5 @@
 name:                vector-space-points
-version:             0.2
+version:             0.2.1
 synopsis:            A type for points, as distinct from vectors.
 description:         A type for points, as distinct from vectors, built on top
                      of Data.AffineSpace.
