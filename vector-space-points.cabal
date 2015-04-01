@@ -6,7 +6,7 @@ description:         A type for points, as distinct from vectors, built on top
 license:             BSD3
 license-file:        LICENSE
 author:              Brent Yorgey
-maintainer:          byorgey@cis.upenn.edu
+maintainer:          diagrams-discuss@googlegroups.com
 bug-reports:         http://github.com/diagrams/vector-space-points/issues
 copyright:           (c) 2011-2012 Brent Yorgey
 category:            Math
